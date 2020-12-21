@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ComponentScan("cjl.spring.app")
+@ComponentScan("cjl.spring")
 //@ImportResource("classpath:spring.xml")
 public class AppConfig {
-	@Bean
+	/*@Bean
 	public A a(){
 		System.out.println("a init");
 		return new A();
@@ -19,5 +19,5 @@ public class AppConfig {
 		a();
 		System.out.println("b init");
 		return new B();
-	}
+	}*/
 }

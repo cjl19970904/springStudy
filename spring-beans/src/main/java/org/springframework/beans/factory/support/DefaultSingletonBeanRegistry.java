@@ -180,6 +180,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	protected Object getSingleton(String beanName, boolean allowEarlyReference) {
 		// Quick check for existing instance without full singleton lock
 		Object singletonObject = this.singletonObjects.get(beanName);
+		//如果这个对象为空 且 这个对象 正在被创建
 		if (singletonObject == null && isSingletonCurrentlyInCreation(beanName)) {
 			singletonObject = this.earlySingletonObjects.get(beanName);
 			if (singletonObject == null && allowEarlyReference) {
@@ -187,12 +188,16 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					// Consistent creation of early reference within full singleton lock
 					singletonObject = this.singletonObjects.get(beanName);
 					if (singletonObject == null) {
+						//chche 3 get
 						singletonObject = this.earlySingletonObjects.get(beanName);
 						if (singletonObject == null) {
+
 							ObjectFactory<?> singletonFactory = this.singletonFactories.get(beanName);
 							if (singletonFactory != null) {
 								singletonObject = singletonFactory.getObject();
+								//放入三级缓存
 								this.earlySingletonObjects.put(beanName, singletonObject);
+								//从二级缓存清除 为什么要清除？
 								this.singletonFactories.remove(beanName);
 							}
 						}
