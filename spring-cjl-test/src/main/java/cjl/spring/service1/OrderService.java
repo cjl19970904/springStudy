@@ -5,8 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderService {
-	@Autowired
-	UserService userService;
+	public void testAop(){
+		System.out.println("order aop -----OrderService");
+	}
 	public OrderService() {
 		System.out.println("orderService start");
 	}

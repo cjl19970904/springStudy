@@ -10,7 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Test2 {
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext ac =new AnnotationConfigApplicationContext();
+		AnnotationConfigApplicationContext ac =new AnnotationConfigApplicationContext(AppConfig.class);
 		ac.register(AppConfig.class);
 
 		//元数据

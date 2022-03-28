@@ -1,9 +1,6 @@
 package cjl.spring.test;
 
 import cjl.spring.app.AppConfig;
-import cjl.spring.service1.OrderService;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**

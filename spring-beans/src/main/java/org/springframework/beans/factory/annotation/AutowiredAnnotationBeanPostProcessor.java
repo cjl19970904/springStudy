@@ -133,6 +133,7 @@ public class AutowiredAnnotationBeanPostProcessor extends InstantiationAwareBean
 
 	private final Set<String> lookupMethodsChecked = Collections.newSetFromMap(new ConcurrentHashMap<>(256));
 
+	//candidateConstructorsCache 已经被推断w完成的类和该类被推断出来的构造方法集合map
 	private final Map<Class<?>, Constructor<?>[]> candidateConstructorsCache = new ConcurrentHashMap<>(256);
 
 	private final Map<String, InjectionMetadata> injectionMetadataCache = new ConcurrentHashMap<>(256);
@@ -243,6 +244,12 @@ public class AutowiredAnnotationBeanPostProcessor extends InstantiationAwareBean
 	public Constructor<?>[] determineCandidateConstructors(Class<?> beanClass, final String beanName)
 			throws BeanCreationException {
 
+		/**
+		 * 你提供了两个合格  -----异常
+		 * 你提供了多个模糊构造  ------- 0个构造方方法 ------- 默认的去实例化对象
+		 * 你提供一个构造方法  ------ 不是默认的----- 就会推断出来
+		 * ctors== null  || ctors ==1
+		 */
 		// Let's check for lookup methods here...
 		if (!this.lookupMethodsChecked.contains(beanName)) {
 			try {
@@ -288,6 +295,13 @@ public class AutowiredAnnotationBeanPostProcessor extends InstantiationAwareBean
 					List<Constructor<?>> candidates = new ArrayList<>(rawCandidates.length);
 					Constructor<?> requiredConstructor = null;
 					Constructor<?> defaultConstructor = null;
+					/**
+					 * findPrimaryConstructor（）
+					 * 把推断主要的构造方法委托给Kotlin    --------  能 {
+					 * 类是 Kotlin
+					 * 类   不是 ---- java
+					 * }
+					 */
 					Constructor<?> primaryConstructor = BeanUtils.findPrimaryConstructor(beanClass);
 					int nonSyntheticConstructors = 0;
 					for (Constructor<?> candidate : rawCandidates) {
