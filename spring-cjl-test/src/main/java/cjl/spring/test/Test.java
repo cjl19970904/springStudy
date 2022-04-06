@@ -1,12 +1,10 @@
 package cjl.spring.test;
 
 import cjl.spring.app.AppConfig;
-import cjl.spring.service.CjlService;
 import cjl.spring.service.IndexService;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Service;
 
 public class Test {
 	public static void main(String[] args) {

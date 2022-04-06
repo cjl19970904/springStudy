@@ -1,14 +1,11 @@
 package cjl.spring.app;
 
-import cjl.spring.beanDefinition.CustomAopBeanPostProcessor;
 import org.springframework.context.annotation.*;
-
-import javax.annotation.PostConstruct;
 
 @Configuration
 @ComponentScan("cjl.spring")
 @EnableAspectJAutoProxy
-//@ImportResource("classpath:spring.xml")
+//@ImportResource("classpath:spring-1.xml")
 //@Import(CustomAopBeanPostProcessor.class)
 public class AppConfig {
 

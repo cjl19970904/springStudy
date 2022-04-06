@@ -54,7 +54,7 @@ public class DefaultLifecycleProcessor implements LifecycleProcessor, BeanFactor
 
 	private final Log logger = LogFactory.getLog(getClass());
 
-	private volatile long timeoutPerShutdownPhase = 30000;
+	private volatile long timeoutPerShutdownPhase = 3000;
 
 	private volatile boolean running;
 

@@ -1,12 +1,8 @@
 package cjl.spring.test;
 
 import cjl.spring.app.AppConfig;
-import cjl.spring.service.CjlService;
 import cjl.spring.service.IndexService;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.ChildBeanDefinition;
-import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
