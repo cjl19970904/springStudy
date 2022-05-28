@@ -88,7 +88,10 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * {@link Configuration @Configuration} classes
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... componentClasses) {
+		//调用构造方法
 		this();
+		//注册配置类（@Configuration 标志的），一般不需要自己扫描
+		//register 本质 ： beanDefinitionMap.put("appConfig",bean)
 		register(componentClasses);
 		refresh();
 	}

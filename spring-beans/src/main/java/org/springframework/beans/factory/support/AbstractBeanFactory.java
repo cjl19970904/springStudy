@@ -240,7 +240,9 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly)
 			throws BeansException {
 
-		//transformedBeanName  对beanName进行转换 name 如果是“&beanName” 那么beanName就是"beanNameFactoryBean"
+		//transformedBeanName
+		// 对beanName进行转换 name 如果是“&beanName” 那么beanName就是"beanNameFactoryBean"
+		// 验证beanName 是否合法
 		String beanName = transformedBeanName(name);
 		Object bean;
 
@@ -322,6 +324,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				}
 
 				// Create bean instance.
+				//创建bean实例
 				//根据scope 创建bean
 				if (mbd.isSingleton()) {
 					//获取单例bean，如果取不到则创建一个bean 并放入单例池中

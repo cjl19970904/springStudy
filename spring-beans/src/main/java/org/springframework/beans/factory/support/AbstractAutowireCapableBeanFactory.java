@@ -129,6 +129,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 	private ParameterNameDiscoverer parameterNameDiscoverer = new DefaultParameterNameDiscoverer();
 
 	/** Whether to automatically try to resolve circular references between beans. */
+	/**
+	 * 是否自动尝试解析bean之间的循环引用。
+	 */
 	private boolean allowCircularReferences = true;
 
 	/**
@@ -156,6 +159,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 	private final NamedThreadLocal<String> currentlyCreatedBean = new NamedThreadLocal<>("Currently created bean");
 
 	/** Cache of unfinished FactoryBean instances: FactoryBean name to BeanWrapper. */
+	//未完成的FactoryBean实例的缓存:将FactoryBean名称命名为BeanWrapper。
 	private final ConcurrentMap<String, BeanWrapper> factoryBeanInstanceCache = new ConcurrentHashMap<>();
 
 	/** Cache of candidate factory methods per factory class. */
@@ -492,6 +496,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 
 		// Prepare method overrides.
+		//准备方法覆盖。
 		try {
 			//通过xml定义的bean中的look-up 方法进行处理
 			//对于@lookUp 注解的方法不在这里处理@AutowairedAnnotationPostProcessor会处理@Lookup注解
@@ -506,6 +511,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		try {
 			// 给BeanPostProcessors一个返回代理而不是目标bean实例的机会。
 			// Give BeanPostProcessors a chance to return a proxy instead of the target bean instance.
+			//让BeanPostProcessors有机会返回一个代理而不是目标bean实例。
 			//实例化前
 			//第一次调用后置处理器-------aop
 			Object bean = resolveBeforeInstantiation(beanName, mbdToUse);
@@ -560,7 +566,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 		//实例化
 		if (instanceWrapper == null) {
-			//创建实例
+			//创建实例,里面第二次调用bean后置处理器
 			instanceWrapper = createBeanInstance(beanName, mbd, args);
 		}
 		//原始对象
@@ -607,7 +613,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			//填充属性
 			//里面会完成第五次和第六次后置处理器调用
 			populateBean(beanName, mbd, instanceWrapper);
-			//初始化 Spring和 beanPostProcessor
+			//初始化 Spring和 beanPostProcessor  初始化bean
 			//里面会调用第七次和第八次调用
 			exposedObject = initializeBean(beanName, exposedObject, mbd);
 		}

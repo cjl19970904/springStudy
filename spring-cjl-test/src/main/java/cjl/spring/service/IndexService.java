@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component
+//@Component
 public class IndexService {
-	@Autowired
+//	@Autowired
 	UserService userService;
 
 	private String name;
@@ -33,7 +33,7 @@ public class IndexService {
 		System.out.println("indexService constr");
 	}
 
-	@PostConstruct
+//	@PostConstruct
 	public void init() {
 		System.out.println("indexService init");
 	}

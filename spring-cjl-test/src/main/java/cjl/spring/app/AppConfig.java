@@ -1,12 +1,16 @@
 package cjl.spring.app;
 
+import cjl.spring.mapper.CustomerAopBeanPostProcessor;
 import org.springframework.context.annotation.*;
 
 @Configuration
 @ComponentScan("cjl.spring")
-@EnableAspectJAutoProxy
+//@Import(CustomerAopBeanPostProcessor.class)
+//@EnableAspectJAutoProxy
+//@MapperScan
 //@ImportResource("classpath:spring-1.xml")
-//@Import(CustomAopBeanPostProcessor.class)
+//@Import(CustomerAopBeanPostProcessor.class)
+@EnableAspectJAutoProxy
 public class AppConfig {
 
 	/**

@@ -353,6 +353,7 @@ class ConfigurationClassEnhancer {
 
 			if (isCurrentlyInvokedFactoryMethod(beanMethod)) {
 				// The factory is calling the bean method in order to instantiate and register the bean
+				//工厂调用bean方法是为了实例化和注册bean
 				// (i.e. via a getBean() call) -> invoke the super implementation of the method to actually
 				// create the bean instance.
 				if (logger.isInfoEnabled() &&
@@ -476,6 +477,10 @@ class ConfigurationClassEnhancer {
 		 * factory method. Compares method name and parameter types only in order to work
 		 * around a potential problem with covariant return types (currently only known
 		 * to happen on Groovy classes).
+		 * 检查给定的方法是否对应于容器当前调用的方法
+		 * 工厂方法。 仅比较方法名和参数类型才能工作
+		 * 关于协变返回类型的一个潜在问题(目前只知道
+		 * 发生在Groovy类上)。
 		 */
 		private boolean isCurrentlyInvokedFactoryMethod(Method method) {
 			Method currentlyInvoked = SimpleInstantiationStrategy.getCurrentlyInvokedFactoryMethod();

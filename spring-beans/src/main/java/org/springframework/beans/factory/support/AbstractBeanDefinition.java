@@ -143,14 +143,15 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	@Nullable
 	private String scope = SCOPE_DEFAULT;
 
+	//是否抽象
 	private boolean abstractFlag = false;
-
+	//是否懒加载
 	private boolean lazyInit = false;
-
+	//自动装配模型
 	private int autowireMode = AUTOWIRE_NO;
-
+	//默认不做依赖检查
 	private int dependencyCheck = DEPENDENCY_CHECK_NONE;
-
+	//放 dependsOn 的名字
 	@Nullable
 	private String[] dependsOn;
 
@@ -431,6 +432,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * specified class name if necessary. Will also reload a specified
 	 * Class from its name when called with the bean class already resolved.
 	 * @param classLoader the ClassLoader to use for resolving a (potential) class name
+	 确定被包装的bean的类，必要时从指定的类名解析它。 当调用已解析的bean类时，也将从其名称重新加载指定的Class。
 	 * @return the resolved bean class
 	 * @throws ClassNotFoundException if the class name could be resolved
 	 */

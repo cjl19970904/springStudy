@@ -6,8 +6,8 @@
 	<!--<bean id="cjlService" class="cjl.spring.service.CjlService">
 
 	</bean>-->
-	<bean id="aaa" abstract="true" scope="singleton">
-		<property name="name" value="123"></property>
+	<bean id="aaa" abstract="true" scope="prototype" >
+<!--		<property name="name" value="cjl"></property>-->
 	</bean>
-	<bean id="indexService" class="cjl.spring.service.IndexService" parent="aaa"></bean>
+	<bean id="indexService" class="cjl.spring.beanDefinition.IndexService" parent="aaa"></bean>
 </beans>

@@ -46,6 +46,11 @@ import org.springframework.util.ObjectUtils;
 @SuppressWarnings("serial")
 public class ChildBeanDefinition extends AbstractBeanDefinition {
 
+	/**
+	 * parentName 父BD 的名字
+	 * 这当前这个类里面一般是通过构造方法设置的
+	 * 这是ChildBeanDefinition 最大局限性的地方
+	 */
 	@Nullable
 	private String parentName;
 

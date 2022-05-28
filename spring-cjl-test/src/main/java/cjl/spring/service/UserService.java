@@ -3,7 +3,7 @@ package cjl.spring.service;
 import cjl.spring.util.CglibUtils;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class UserService/* implements AopTestInterface*/ {
 
 	public void testAop(){

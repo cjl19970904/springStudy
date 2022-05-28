@@ -13,7 +13,7 @@ public class CjlBeanFactoryPostProcessors implements BeanFactoryPostProcessor {
 	 */
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-		GenericBeanDefinition cjlService =(GenericBeanDefinition) beanFactory.getBeanDefinition("cjlService");
-		cjlService.setBeanClass(TestService.class);
+	/*	GenericBeanDefinition cjlService =(GenericBeanDefinition) beanFactory.getBeanDefinition("cjlService");
+		cjlService.setBeanClass(TestService.class);*/
 	}
 }

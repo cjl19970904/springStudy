@@ -83,17 +83,21 @@ import org.springframework.lang.Nullable;
 	// Modifiable attributes
 
 	/**
+	 * //设置父BeanDefinition
 	 * Set the name of the parent definition of this bean definition, if any.
 	 */
 	void setParentName(@Nullable String parentName);
 
 	/**
+	 * 获取父BeanDefinition
 	 * Return the name of the parent definition of this bean definition, if any.
 	 */
 	@Nullable
 	String getParentName();
 
 	/**
+	 * //设置bean 的类型 -名字 --string
+	 *
 	 * Specify the bean class name of this bean definition.
 	 * <p>The class name can be modified during bean factory post-processing,
 	 * typically replacing the original class name with a parsed variant of it.

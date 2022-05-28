@@ -77,6 +77,13 @@ abstract class ConfigurationClassUtils {
 	 * @param beanDef the bean definition to check
 	 * @param metadataReaderFactory the current factory in use by the caller
 	 * @return whether the candidate qualifies as (any kind of) configuration class
+	 *
+	 * 检查给定的bean定义是否为配置类的候选
+	 * *(或者在配置/组件类中声明的嵌套组件类，
+	 * *也将自动注册)，并相应地作出标记。
+	 * * @param beanDef要检查的bean定义
+	 * * @param metadataReaderFactory调用者使用的当前工厂
+	 * * @return是否符合(任何类型的)配置类
 	 */
 	public static boolean checkConfigurationClassCandidate(
 			BeanDefinition beanDef, MetadataReaderFactory metadataReaderFactory) {
@@ -189,6 +196,7 @@ abstract class ConfigurationClassUtils {
 	/**
 	 * Determine whether the given bean definition indicates a full {@code @Configuration}
 	 * class, through checking {@link #checkConfigurationClassCandidate}'s metadata marker.
+	 * 确定给定的bean定义是否表示一个完整的{@code @Configuration}类，通过检查{@link #checkConfigurationClassCandidate}的元数据标记。
 	 */
 	public static boolean isFullConfigurationClass(BeanDefinition beanDef) {
 		return CONFIGURATION_CLASS_FULL.equals(beanDef.getAttribute(CONFIGURATION_CLASS_ATTRIBUTE));
